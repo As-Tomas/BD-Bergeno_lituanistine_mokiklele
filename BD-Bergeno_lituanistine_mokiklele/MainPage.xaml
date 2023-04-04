@@ -11,7 +11,36 @@
             Padding="30,0" 
             VerticalOptions="Center">
 
-        <Image Source="company_logo.jpg" HeightRequest="150" WidthRequest="150"/>
+        <Image Source="company_logo.jpg" HeightRequest="280" WidthRequest="280"/>
+        
+        <VerticalStackLayout Spacing="5">
+            <Label Text="Sveiki!" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center"/>
+            <Label Text="Prisijunkite prie savo paskyros" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.svg" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:BorderlessEntry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="El-paštas" Keyboard="Email"/>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="lock.svg" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:BorderlessEntry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Slaptažodis" Keyboard="Email"/>
+            </Frame>
+        </StackLayout>
+        <Button Text="Prisijungti" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" />
+
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+            <Label Text="Neturi Paskyros?" TextColor="Gray"/>
+            <Label Text="Registruotis" TextColor="#50b3f2"/>
+        </StackLayout>
 
     </VerticalStackLayout>
     <!--<CollectionView x:Name="collectionView"
