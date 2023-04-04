@@ -1,11 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:model="clr-namespace:BD_Bergeno_lituanistine_mokiklele.Models"
-             x:Class="BD_Bergeno_lituanistine_mokiklele.MainPage"
-             x:Name="content">
+             Shell.NavBarIsVisible="False"
+             xmlns:handlers="clr-namespace:BD_Bergeno_lituanistine_mokiklele.Handlers"
+             x:Class="BD_Bergeno_lituanistine_mokiklele.MainPage"             
+             >
 
-    <CollectionView x:Name="collectionView"
+    <VerticalStackLayout 
+            Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center">
+
+        <Image Source="company_logo.jpg" HeightRequest="150" WidthRequest="150"/>
+
+    </VerticalStackLayout>
+    <!--<CollectionView x:Name="collectionView"
                     SelectionMode="Single">
 
         <CollectionView.ItemTemplate>
@@ -20,6 +29,6 @@
                 
             </DataTemplate>
         </CollectionView.ItemTemplate>
-    </CollectionView>
+    </CollectionView>-->
 
 </ContentPage>

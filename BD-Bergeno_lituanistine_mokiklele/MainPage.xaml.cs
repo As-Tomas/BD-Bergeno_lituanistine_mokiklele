@@ -30,7 +30,7 @@ public partial class MainPage : ContentPage
     protected async override void OnAppearing() {
         base.OnAppearing();
 
-        collectionView.ItemsSource = await _dataService.GetAllPostsAsync();
+        //collectionView.ItemsSource = await _dataService.GetAllPostsAsync();
     }
 }
 
