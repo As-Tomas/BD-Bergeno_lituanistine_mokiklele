@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:BD_Bergeno_lituanistine_mokiklele.Models"
+             x:Class="BD_Bergeno_lituanistine_mokiklele.MainPage"
+             x:Name="content">
+
+    <CollectionView x:Name="collectionView"
+                    SelectionMode="Single">
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <VerticalStackLayout Padding="10" Spacing="4">
+                    <Label Text="{Binding id}" FontSize="Medium" />
+                    <Label Text="{Binding content.rendered}" FontSize="Medium" />
+                    
+                </VerticalStackLayout>
+
+                
+                
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>

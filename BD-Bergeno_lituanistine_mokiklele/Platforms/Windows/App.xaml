@@ -1,0 +1,8 @@
+﻿<maui:MauiWinUIApplication
+    x:Class="BD_Bergeno_lituanistine_mokiklele.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:BD_Bergeno_lituanistine_mokiklele.WinUI">
+
+</maui:MauiWinUIApplication>
