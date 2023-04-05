@@ -1,4 +1,8 @@
 ﻿using BD_Bergeno_lituanistine_mokiklele.Services;
+using BD_Bergeno_lituanistine_mokiklele.ViewModels.Dashboard;
+using BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup;
+using BD_Bergeno_lituanistine_mokiklele.Views.Dashboard;
+using BD_Bergeno_lituanistine_mokiklele.Views.Startup;
 using Microsoft.Extensions.Logging;
 
 namespace BD_Bergeno_lituanistine_mokiklele;
@@ -16,12 +20,17 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		builder.Services.AddSingleton<IRestDataService, RestDataService>();
-		builder.Services.AddSingleton<MainPage>();
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
+        //Views
+        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddSingleton<DashboardPage>();
+        builder.Services.AddSingleton<LoadingPage>();
 
-		return builder.Build();
-	}
+
+        //View Models
+        builder.Services.AddSingleton<LoginPageViewModel>();
+        builder.Services.AddSingleton<DashboardPageViewModel>();
+        builder.Services.AddSingleton<LoadingPageViewModel>();
+
+        return builder.Build();
+    }
 }

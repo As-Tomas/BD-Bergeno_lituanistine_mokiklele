@@ -1,11 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:model="clr-namespace:BD_Bergeno_lituanistine_mokiklele.Models"
-             x:Class="BD_Bergeno_lituanistine_mokiklele.MainPage"
-             x:Name="content">
+             Shell.NavBarIsVisible="False"
+             xmlns:handlers="clr-namespace:BD_Bergeno_lituanistine_mokiklele.Handlers"
+             x:Class="BD_Bergeno_lituanistine_mokiklele.MainPage"             
+             >
 
-    <CollectionView x:Name="collectionView"
+    <VerticalStackLayout 
+            Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center">
+
+    </VerticalStackLayout>
+    
+    <!--<VerticalStackLayout 
+            Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center">
+
+        <Image Source="company_logo.jpg" HeightRequest="280" WidthRequest="280"/>
+        
+        <VerticalStackLayout Spacing="5">
+            <Label Text="Sveiki!" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center"/>
+            <Label Text="Prisijunkite prie savo paskyros" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.svg" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:BorderlessEntry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="El-paštas" Keyboard="Email"/>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="lock.svg" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:BorderlessEntry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Slaptažodis" Keyboard="Email"/>
+            </Frame>
+        </StackLayout>
+        <Button Text="Prisijungti" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" />
+
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+            <Label Text="Neturi Paskyros?" TextColor="Gray"/>
+            <Label Text="Registruotis" TextColor="#50b3f2"/>
+        </StackLayout>
+
+    </VerticalStackLayout>-->
+    
+    
+    <!--<CollectionView x:Name="collectionView"
                     SelectionMode="Single">
 
         <CollectionView.ItemTemplate>
@@ -20,6 +67,6 @@
                 
             </DataTemplate>
         </CollectionView.ItemTemplate>
-    </CollectionView>
+    </CollectionView>-->
 
 </ContentPage>
