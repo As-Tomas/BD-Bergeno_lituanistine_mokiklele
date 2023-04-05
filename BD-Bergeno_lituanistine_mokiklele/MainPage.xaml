@@ -11,6 +11,13 @@
             Padding="30,0" 
             VerticalOptions="Center">
 
+    </VerticalStackLayout>
+    
+    <!--<VerticalStackLayout 
+            Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center">
+
         <Image Source="company_logo.jpg" HeightRequest="280" WidthRequest="280"/>
         
         <VerticalStackLayout Spacing="5">
@@ -42,7 +49,9 @@
             <Label Text="Registruotis" TextColor="#50b3f2"/>
         </StackLayout>
 
-    </VerticalStackLayout>
+    </VerticalStackLayout>-->
+    
+    
     <!--<CollectionView x:Name="collectionView"
                     SelectionMode="Single">
 

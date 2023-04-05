@@ -21,16 +21,20 @@ public partial class MainPage : ContentPage
 
     }*/
 
-    public MainPage(IRestDataService dataService) {
+    //public MainPage(IRestDataService dataService) {
+    //    InitializeComponent();
+
+    //    _dataService = dataService;
+    //}
+
+    //protected async override void OnAppearing() {
+    //    base.OnAppearing();
+
+    //    //collectionView.ItemsSource = await _dataService.GetAllPostsAsync();
+    //}
+
+    public MainPage() {
         InitializeComponent();
-
-        _dataService = dataService;
-    }
-
-    protected async override void OnAppearing() {
-        base.OnAppearing();
-
-        //collectionView.ItemsSource = await _dataService.GetAllPostsAsync();
     }
 }
 

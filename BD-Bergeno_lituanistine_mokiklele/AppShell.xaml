@@ -4,11 +4,25 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:BD_Bergeno_lituanistine_mokiklele"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:dashboardPages="clr-namespace:BD_Bergeno_lituanistine_mokiklele.Views.Dashboard"
+    xmlns:models="clr-namespace:BD_Bergeno_lituanistine_mokiklele.Models"
+    Shell.TabBarIsVisible="False"
+    xmlns:startupPages="clr-namespace:BD_Bergeno_lituanistine_mokiklele.Views.Startup">
+
+
+    <ShellContent FlyoutItemIsVisible="False" Shell.FlyoutBehavior="Disabled"
+        ContentTemplate="{DataTemplate startupPages:LoadingPage}" Route="LoadingPage" />
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Login Page" FlyoutItemIsVisible="False" Shell.FlyoutBehavior="Disabled"
+        ContentTemplate="{DataTemplate startupPages:LoginPage}"
+        Route="LoginPage" />
+
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20">
+            <Button Text="Sign Out" Command="{Binding SignOutCommand}" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
 
 </Shell>
