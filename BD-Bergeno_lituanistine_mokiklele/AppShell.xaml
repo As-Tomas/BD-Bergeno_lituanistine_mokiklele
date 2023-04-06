@@ -18,6 +18,11 @@
         ContentTemplate="{DataTemplate startupPages:LoginPage}"
         Route="LoginPage" />
 
+    <ShellContent
+        Title="RegisterPage" FlyoutItemIsVisible="False" Shell.FlyoutBehavior="Disabled"
+        ContentTemplate="{DataTemplate startupPages:RegisterPage}"
+        Route="RegisterPage" />
+
 
     <Shell.FlyoutFooter>
         <StackLayout Padding="20">

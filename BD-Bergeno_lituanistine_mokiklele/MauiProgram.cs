@@ -24,12 +24,15 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<DashboardPage>();
         builder.Services.AddSingleton<LoadingPage>();
+        builder.Services.AddSingleton<RegisterPage>();
+
 
 
         //View Models
         builder.Services.AddSingleton<LoginPageViewModel>();
         builder.Services.AddSingleton<DashboardPageViewModel>();
         builder.Services.AddSingleton<LoadingPageViewModel>();
+        builder.Services.AddSingleton<RegisterPageViewModel>();
 
         return builder.Build();
     }

@@ -28,7 +28,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
             if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password)) {
                 var userDetails = new UserBasicInfo();
                 userDetails.Email = Email;
-                userDetails.FullName = "Test User Name";
+                userDetails.FullName = "User Name";
 
                 // Narys Role, Teacher Role, Admin Role,
                 if (Email.ToLower().Contains("narys")) {
@@ -57,9 +57,28 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
                 App.UserDetails = userDetails;
                 await AppConstant.AddFlyoutMenusDetails();
             }
+        }
 
+        [RelayCommand]
+         async void Register() {
 
+            await Shell.Current.GoToAsync($"//{nameof(RegisterPage)}");
+
+            ////await DisplayAlert("Tapped", "This is a tapped Span.", "OK")
+            //AppShell.Current.Dispatcher.Dispatch( () => {
+            //     Shell.Current.GoToAsync($"//{nameof(RegisterPage)}");
+            
+            //});
         }
         #endregion
+
+        [RelayCommand]
+        async void OnTapGestureRecognizerTapped(ItemTappedEventArgs e) {
+            // Handle the tap
+            await Shell.Current.GoToAsync($"//{nameof(RegisterPage)}");
+        }
+        
+
+
     }
 }

@@ -6,44 +6,7 @@
              xmlns:handlers="clr-namespace:BD_Bergeno_lituanistine_mokiklele.Handlers"  
              Title="LoginPage"
              >
-    <!--<VerticalStackLayout 
-            Spacing="25" 
-            Padding="30,0" 
-            VerticalOptions="Center">
-
-        <Image Source="company_logo.jpg" HeightRequest="150" WidthRequest="150" />
-
-        <VerticalStackLayout Spacing="5">
-            <Label Text="Welcome!" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center" />
-            <Label Text="Login to your account" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center" />
-        </VerticalStackLayout>
-
-        <StackLayout Orientation="Horizontal">
-            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
-                <Image Source="user.png" HeightRequest="20" WidthRequest="20" />
-            </Frame>
-            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White"  HorizontalOptions="FillAndExpand">
-                <handlers:BorderlessEntry Text="{Binding Email}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="User Name" Keyboard="Email" />
-            </Frame>
-        </StackLayout>
-
-        <StackLayout Orientation="Horizontal">
-            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
-                <Image Source="lock.png" HeightRequest="20" WidthRequest="20" />
-            </Frame>
-            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White"  HorizontalOptions="FillAndExpand">
-                <handlers:BorderlessEntry Text="{Binding Password}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" IsPassword="True" />
-            </Frame>
-        </StackLayout>
-
-        <Button Text="Sign In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" Command="{Binding LoginCommand}" />
-
-        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-            <Label Text="Don't have account?" TextColor="Gray" />
-            <Label Text="Sign Up here" TextColor="#50b3f2" />
-        </StackLayout>
-    </VerticalStackLayout>
-</ContentPage>-->
+   
 
 <VerticalStackLayout 
             Spacing="25" 
@@ -76,10 +39,25 @@
         </StackLayout>
 
         <Button Text="Prisijungti" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Command="{Binding LoginCommand}" />
+        <Button Text="reg" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Command="{Binding RegisterCommand}" />
 
         <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-            <Label Text="Neturi Paskyros?" TextColor="Gray"/>
-            <Label Text="Registruotis" TextColor="#50b3f2"/>
+            
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Neturi Paskyros? " TextColor="Gray"/>
+                        <Span Text="Registruotis"
+                              TextColor="#50b3f2"
+                              TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding OnTapGestureRecognizerTapped}" />
+
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
         </StackLayout>
 
     </VerticalStackLayout>
