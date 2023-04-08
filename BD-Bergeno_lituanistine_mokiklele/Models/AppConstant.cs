@@ -23,7 +23,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
             if (adminDashboardInfo != null) AppShell.Current.Items.Remove(adminDashboardInfo);
 
 
-            if (App.UserDetails.RoleID == (int)RoleDetails.Narys) {
+            if (App.UserDetails.RoleID == (int)RoleDetails.Subscriber) {
                 var flyoutItem = new FlyoutItem() {
                     Title = "Dashboard Page",
                     Route = nameof(NarysDashboardPage),
@@ -33,7 +33,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                 new ShellContent
                                 {
                                     Icon = Icons.Dashboard,
-                                    Title = "Narys Dashboard",
+                                    Title = "Subscriber Dashboard",
                                     ContentTemplate = new DataTemplate(typeof(NarysDashboardPage)),
                                 },
                                 new ShellContent
@@ -58,7 +58,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
 
             }
 
-            if (App.UserDetails.RoleID == (int)RoleDetails.Redaktorius) {
+            if (App.UserDetails.RoleID == (int)RoleDetails.Author) {
                 var flyoutItem = new FlyoutItem() {
                     Title = "Dashboard Page",
                     Route = nameof(TeacherDashboardPage),
@@ -93,7 +93,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                 }
             }
 
-            if (App.UserDetails.RoleID == (int)RoleDetails.Administratorius) {
+            if (App.UserDetails.RoleID == (int)RoleDetails.Administrator) {
                 var flyoutItem = new FlyoutItem() {
                     Title = "Dashboard Page",
                     Route = nameof(AdminDashboardPage),

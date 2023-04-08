@@ -1,4 +1,5 @@
 ﻿using BD_Bergeno_lituanistine_mokiklele.Services;
+using BD_Bergeno_lituanistine_mokiklele.ViewModels;
 using BD_Bergeno_lituanistine_mokiklele.ViewModels.Dashboard;
 using BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup;
 using BD_Bergeno_lituanistine_mokiklele.Views.Dashboard;
@@ -19,6 +20,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+        builder.Services.AddSingleton<ILoginService, LoginService>();
 
         //Views
         builder.Services.AddSingleton<LoginPage>();

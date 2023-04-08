@@ -17,6 +17,10 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
         private async void CheckUserLoginDetails() {
             string userDetailsStr = Preferences.Get(nameof(App.UserDetails), "");
 
+            //if (Preferences.ContainsKey(nameof(App.UserDetails))) {
+            //    Preferences.Remove(nameof(App.UserDetails));
+            //}
+
             if (string.IsNullOrWhiteSpace(userDetailsStr)) {
                 if (DeviceInfo.Platform == DevicePlatform.WinUI) {
                     AppShell.Current.Dispatcher.Dispatch(async () => {

@@ -6,21 +6,30 @@
              Title="RegisterPage">
 
     <VerticalStackLayout 
-            Spacing="25" 
+            Spacing="15" 
             Padding="30,0" 
-            VerticalOptions="Center">
+            VerticalOptions="Start">
 
         <VerticalStackLayout Spacing="5">
             <Label Text="Registracija!" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center"/>
-            <Label Text="Visi laukai privalomi" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center"/>
-        </VerticalStackLayout>
+            <Label Text="Visi laukai privalomi" FontSize="17" TextColor="Gray" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>   
 
         <StackLayout Orientation="Horizontal">
             <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
                 <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
             </Frame>
             <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <handlers:BorderlessEntry Text="{Binding Email}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="El-paštas" Keyboard="Email"/>
+                <handlers:BorderlessEntry Text="{Binding FirstName}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Vardas" Keyboard="Text"/>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:BorderlessEntry Text="{Binding LastName}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Pavarde" Keyboard="Text"/>
             </Frame>
         </StackLayout>
 
@@ -32,6 +41,16 @@
                 <handlers:BorderlessEntry Text="{Binding Email}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="El-paštas" Keyboard="Email"/>
             </Frame>
         </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:BorderlessEntry Text="{Binding UserName}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Vartotojo vardas" Keyboard="Email"/>
+            </Frame>
+        </StackLayout>
+        
 
         <StackLayout Orientation="Horizontal">
             <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
@@ -41,8 +60,17 @@
                 <handlers:BorderlessEntry Text="{Binding Password}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Slaptažodis" Keyboard="Email"/>
             </Frame>
         </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="lock.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:BorderlessEntry Text="{Binding ConfirmPassword}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Patvirtintkite Slaptažodi" Keyboard="Email"/>
+            </Frame>
+        </StackLayout>
 
-        <Button Text="Prisijungti" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Command="{Binding LoginCommand}" />
+        <Button Text="Registruotis" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Command="{Binding RegisterCommand}" />
 
         
 

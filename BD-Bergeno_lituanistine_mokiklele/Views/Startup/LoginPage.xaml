@@ -39,7 +39,7 @@
         </StackLayout>
 
         <Button Text="Prisijungti" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Command="{Binding LoginCommand}" />
-        <Button Text="reg" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Command="{Binding RegisterCommand}" />
+        <Button Text="reg" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Command="{Binding GoToRegisterCommand}" />
 
         <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
             
@@ -52,7 +52,7 @@
                               TextDecorations="Underline">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer  Command="{Binding OnTapGestureRecognizerTapped}" />
-
+            <!--neveikia ir nzn kodel-->
                             </Span.GestureRecognizers>
                         </Span>
                     </FormattedString>
