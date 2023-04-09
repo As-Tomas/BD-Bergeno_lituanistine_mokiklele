@@ -20,6 +20,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
             //if (Preferences.ContainsKey(nameof(App.UserDetails))) {
             //    Preferences.Remove(nameof(App.UserDetails));
             //}
+            
 
             if (string.IsNullOrWhiteSpace(userDetailsStr)) {
                 if (DeviceInfo.Platform == DevicePlatform.WinUI) {
@@ -34,6 +35,11 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
             }
             else {
                 var userInfo = JsonConvert.DeserializeObject<UserBasicInfo>(userDetailsStr);
+                if (userInfo.Role == null) { // temp bug fix loading page constantly loading
+                    userInfo.Role = "Administrator";
+                    userInfo.RoleID = 1;
+
+                }
                 App.UserDetails = userInfo;
                 await AppConstant.AddFlyoutMenusDetails();
             }

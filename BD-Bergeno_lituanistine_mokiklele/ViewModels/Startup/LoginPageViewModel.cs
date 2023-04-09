@@ -53,18 +53,14 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
 
                 // calling api 
                 var response = await _loginService.Authenticate(new LoginRequest {
-                    //username = Email,
-                    //password = Password
-                    username = "Edita",
-                    password = "XsQh!Vl7YALC*!y8)EQNWWuy"
+                    username = Email,
+                    password = Password
+                    //username = "Edita",
+                    //password = "EQNWWu6fghs445y67674ghj"
 
                 });
 
                 if (response != null) {
-
-                    if (response.User_display_name == null) { }
-
-                    if (response.User_email == null) { }
 
                     if (response.UserBasicInfo.Role == null) {
                         await AppShell.Current.DisplayAlert("No Role Assigned",

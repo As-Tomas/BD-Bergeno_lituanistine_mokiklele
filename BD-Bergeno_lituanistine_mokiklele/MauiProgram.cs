@@ -22,6 +22,7 @@ public static class MauiProgram
 			});
 
         builder.Services.AddSingleton<ILoginService, LoginService>();
+        builder.Services.AddSingleton<IRegisterService, RegisterService>();
 
         //Views
         builder.Services.AddSingleton<LoginPage>();

@@ -1,4 +1,5 @@
 using BD_Bergeno_lituanistine_mokiklele.Models;
+using BD_Bergeno_lituanistine_mokiklele.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
@@ -7,8 +8,8 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup;
 
 public partial class RegisterPageViewModel : BaseViewModel {
     
-        [ObservableProperty]
-        private string _firstName;
+    [ObservableProperty]
+    private string _firstName;
 
     [ObservableProperty]
     private string _lastName;
@@ -25,11 +26,26 @@ public partial class RegisterPageViewModel : BaseViewModel {
     [ObservableProperty]
     private string _confirmPassword;
 
+    private readonly IRegisterService _registerService;
+
+    public RegisterPageViewModel(IRegisterService registerService) 
+    {
+        _registerService = registerService;
+    }
+
 
     [RelayCommand]
     async void Register() {
-            if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password)
-            && !string.IsNullOrWhiteSpace(ConfirmPassword) && !string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName)) {
+        if (!string.IsNullOrWhiteSpace(Email)  && !string.IsNullOrWhiteSpace(Password)
+        && !string.IsNullOrWhiteSpace(ConfirmPassword) && !string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName)) {
+            if (!Password.Equals(ConfirmPassword))
+            {
+                await AppShell.Current.DisplayAlert("Slaptazodis nesutampa!",
+                        "Ivesti slaptazodziai nesutampa.", "OK");
+                return;
+            }
+            else 
+            {
                 var userDetails = new UserBasicInfo();
                 userDetails.Email = Email;
                 userDetails.FirstName = FirstName;
@@ -38,26 +54,32 @@ public partial class RegisterPageViewModel : BaseViewModel {
                 userDetails.UserName = UserName;
 
 
-            // calling api
+                // calling api
 
-            // Subscriber Role, Teacher Role, Admin Role,
-            if (Email.ToLower().Contains("narys")) {
-                    userDetails.RoleID = (int)RoleDetails.Subscriber;
-                    userDetails.Role = "Subscriber";
+                var response = await _registerService.RegisterNewUser(new RegisterRequest {
+                    first_name = FirstName,
+                    last_name = LastName,
+                    username = UserName,
+                    password = Password,
+                    email = Email,
+                    description = ""
+                });
+
+                if (response != null) {
+                    
+                    //if (response. == null) {
+                    //    await AppShell.Current.DisplayAlert("No Role Assigned",
+                    //        "No role assigned to this user.", "OK");
+                    //    return;
+                    //}
                 }
-                else if (Email.ToLower().Contains("redaktorius")) {
-                    userDetails.RoleID = (int)RoleDetails.Author;
-                    userDetails.Role = "Author";
-                }
-                else {
-                    userDetails.RoleID = (int)RoleDetails.Administrator;
-                    userDetails.Role = "Administrator";
+                else 
+                {
+                    await AppShell.Current.DisplayAlert("Invalid registration!", "Sorry something vent wrong", "OK");
                 }
 
- 
 
-
-            if (Preferences.ContainsKey(nameof(App.UserDetails))) {
+                if (Preferences.ContainsKey(nameof(App.UserDetails))) {
                     Preferences.Remove(nameof(App.UserDetails));
                 }
 
@@ -66,5 +88,6 @@ public partial class RegisterPageViewModel : BaseViewModel {
                 App.UserDetails = userDetails;
                 await AppConstant.AddFlyoutMenusDetails();
             }
+            }            
         }
     }

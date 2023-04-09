@@ -13,8 +13,8 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
         public async static Task AddFlyoutMenusDetails() {
             AppShell.Current.FlyoutHeader = new FlyoutHeaderControl();
 
-            var studentDashboardInfo = AppShell.Current.Items.Where(f => f.Route == nameof(NarysDashboardPage)).FirstOrDefault();
-            if (studentDashboardInfo != null) AppShell.Current.Items.Remove(studentDashboardInfo);
+            var subscriberDashboardInfo = AppShell.Current.Items.Where(f => f.Route == nameof(NarysDashboardPage)).FirstOrDefault();
+            if (subscriberDashboardInfo != null) AppShell.Current.Items.Remove(subscriberDashboardInfo);
 
             var teacherDashboardInfo = AppShell.Current.Items.Where(f => f.Route == nameof(TeacherDashboardPage)).FirstOrDefault();
             if (teacherDashboardInfo != null) AppShell.Current.Items.Remove(teacherDashboardInfo);
