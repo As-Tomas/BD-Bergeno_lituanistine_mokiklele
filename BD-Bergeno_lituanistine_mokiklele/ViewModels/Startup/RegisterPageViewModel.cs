@@ -3,6 +3,8 @@ using BD_Bergeno_lituanistine_mokiklele.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 
 namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup;
 
@@ -27,67 +29,108 @@ public partial class RegisterPageViewModel : BaseViewModel {
     private string _confirmPassword;
 
     private readonly IRegisterService _registerService;
+    private readonly ILoginService _loginService;
 
-    public RegisterPageViewModel(IRegisterService registerService) 
+    public RegisterPageViewModel(IRegisterService registerService, ILoginService loginService) 
     {
         _registerService = registerService;
+        _loginService = loginService;
     }
 
 
     [RelayCommand]
     async void Register() {
-        if (!string.IsNullOrWhiteSpace(Email)  && !string.IsNullOrWhiteSpace(Password)
-        && !string.IsNullOrWhiteSpace(ConfirmPassword) && !string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName)) {
-            if (!Password.Equals(ConfirmPassword))
-            {
+
+//        if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password)
+//&& !string.IsNullOrWhiteSpace(ConfirmPassword) && !string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName)) {
+//            if (!Password.Equals(ConfirmPassword)) {
+                if (true) {
+            if (1>1) {
+
+
                 await AppShell.Current.DisplayAlert("Slaptazodis nesutampa!",
                         "Ivesti slaptazodziai nesutampa.", "OK");
                 return;
             }
-            else 
-            {
-                var userDetails = new UserBasicInfo();
-                userDetails.Email = Email;
-                userDetails.FirstName = FirstName;
-                userDetails.LastName = LastName;
-                userDetails.Password = Password;
-                userDetails.UserName = UserName;
-
+            else {
 
                 // calling api
 
+                //var response = await _registerService.RegisterNewUser(new RegisterRequest {
+                //    first_name = FirstName,
+                //    last_name = LastName,
+                //    username = UserName,
+                //    password = Password,
+                //    email = Email,
+                //    description = ""
+                //});
+
+                // for debug - every try remove this user from WP or change user_name and email!
+                String email = "petras@petraitis.ua";
+                String psw = "Paswordas";
                 var response = await _registerService.RegisterNewUser(new RegisterRequest {
-                    first_name = FirstName,
-                    last_name = LastName,
-                    username = UserName,
-                    password = Password,
-                    email = Email,
-                    description = ""
+                    first_name = "AVardas",
+                    last_name = "APavarde",
+                    username = "AVardas",
+                    password = psw,
+                    email = email,
+                    description = "Naujas useris"
                 });
 
                 if (response != null) {
-                    
-                    //if (response. == null) {
-                    //    await AppShell.Current.DisplayAlert("No Role Assigned",
-                    //        "No role assigned to this user.", "OK");
-                    //    return;
-                    //}
+                    Int32 responseCode = (Int32)response.code;
+
+                    if (responseCode.Equals(200)) {
+                        var registrationSuccess = Toast.Make("Registracija sekminga", ToastDuration.Long);
+                        registrationSuccess.Show();
+
+                        // login with new user account
+                        var loginResponse = await _loginService.Authenticate(new LoginRequest {
+                            username = email,
+                            password = psw
+                        });
+                        if (loginResponse != null) {
+
+                            if (Preferences.ContainsKey(nameof(App.UserDetails))) {
+                                Preferences.Remove(nameof(App.UserDetails));
+                            }
+
+                            string userDetailStr = JsonConvert.SerializeObject(loginResponse.UserBasicInfo);
+                            Preferences.Set(nameof(App.UserDetails), userDetailStr);
+                            App.UserDetails = loginResponse.UserBasicInfo;
+                            App.UserDetails.Token = loginResponse.Token;
+                            await AppConstant.AddFlyoutMenusDetails();
+                        }
+                    }
+                    else 
+                    {
+                        var registrationFailure = Toast.Make($"{response.message}", ToastDuration.Long);
+                        registrationFailure.Show();
+                    }
+
+
+
+
                 }
-                else 
-                {
+                else {
                     await AppShell.Current.DisplayAlert("Invalid registration!", "Sorry something vent wrong", "OK");
                 }
 
 
-                if (Preferences.ContainsKey(nameof(App.UserDetails))) {
-                    Preferences.Remove(nameof(App.UserDetails));
-                }
+                //if (Preferences.ContainsKey(nameof(App.UserDetails))) {
+                //    Preferences.Remove(nameof(App.UserDetails));
+                //}
 
-                string userDetailStr = JsonConvert.SerializeObject(userDetails);
-                Preferences.Set(nameof(App.UserDetails), userDetailStr);
-                App.UserDetails = userDetails;
-                await AppConstant.AddFlyoutMenusDetails();
+                //string userDetailStr = JsonConvert.SerializeObject(userDetails);
+                //Preferences.Set(nameof(App.UserDetails), userDetailStr);
+                //App.UserDetails = userDetails;
+                //await AppConstant.AddFlyoutMenusDetails();
             }
-            }            
+        }
+        else {
+            var toast = Toast.Make("Užpildykite visus privalomus laukus", ToastDuration.Long);
+            toast.Show();
+        }
+        
         }
     }

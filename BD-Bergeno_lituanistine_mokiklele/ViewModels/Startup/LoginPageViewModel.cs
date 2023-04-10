@@ -55,8 +55,6 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
                 var response = await _loginService.Authenticate(new LoginRequest {
                     username = Email,
                     password = Password
-                    //username = "Edita",
-                    //password = "EQNWWu6fghs445y67674ghj"
 
                 });
 
@@ -70,13 +68,13 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
 
                         return;
                     }
-                    response.UserBasicInfo.Email = Email;
+                    
 
                     if (Preferences.ContainsKey(nameof(App.UserDetails))) {
                         Preferences.Remove(nameof(App.UserDetails));
                     }
 
-                    await SecureStorage.SetAsync(nameof(App.UserDetails.Token), response.Token);
+                    //await SecureStorage.SetAsync(nameof(App.UserDetails.Token), response.Token);
 
                     string userDetailStr = JsonConvert.SerializeObject(response.UserBasicInfo);
                     Preferences.Set(nameof(App.UserDetails), userDetailStr);

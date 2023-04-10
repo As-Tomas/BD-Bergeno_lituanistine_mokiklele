@@ -1,8 +1,10 @@
 ﻿using BD_Bergeno_lituanistine_mokiklele.Models;
+
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
@@ -48,9 +50,9 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
                          await UpdateLocalBasicUserInfo(responseObject);
 
 
-                        return responseObject;
+                        return responseObject; 
                     }
-                    else {
+                    else {                        
                         return null;
                     }
                 }
@@ -60,19 +62,22 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
                 }
             }
         }
-        
-        public async Task UpdateLocalBasicUserInfo(LoginResponse authenticationResponse) {
+
+
+        //EQNWWuhs445y67eee74lkhghj
+        private async Task UpdateLocalBasicUserInfo(LoginResponse authenticationResponse) {
 
             var token = authenticationResponse.Token;
             var email = authenticationResponse.User_email;
 
-            using (var Client = new HttpClient()) {
+            using (var _httpClient = new HttpClient()) {
 
-                Client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                HttpResponseMessage responseOfUpdate = await Client.GetAsync($"{_url}/wp/v2/users?search={email}");
+                _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                HttpResponseMessage responseOfUpdate = await _httpClient.GetAsync($"{_url}/wp/v2/users?search={email}");
 
                 if (responseOfUpdate.StatusCode == System.Net.HttpStatusCode.OK) {
 
+                    
                     var json2 = await responseOfUpdate.Content.ReadAsStringAsync();
                     var responseObject2 = JsonConvert.DeserializeObject<List<Root>>(json2);
                     authenticationResponse.UserBasicInfo.Role = responseObject2[0].roles[0];
