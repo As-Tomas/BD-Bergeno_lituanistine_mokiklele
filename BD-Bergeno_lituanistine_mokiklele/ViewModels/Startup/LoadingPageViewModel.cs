@@ -35,11 +35,11 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
             }
             else {
                 var userInfo = JsonConvert.DeserializeObject<UserBasicInfo>(userDetailsStr);
-                if (userInfo.Role == null) { // temp bug fix loading page constantly loading
-                    userInfo.Role = "Administrator";
-                    userInfo.RoleID = 1;
+                //if (userInfo.Role == null) { // temp bug fix loading page constantly loading
+                //    userInfo.Role = "Administrator";
+                //    userInfo.RoleID = 1;
 
-                }
+                //}
                 App.UserDetails = userInfo;
                 await AppConstant.AddFlyoutMenusDetails();
             }

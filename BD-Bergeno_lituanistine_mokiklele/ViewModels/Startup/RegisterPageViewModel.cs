@@ -41,40 +41,24 @@ public partial class RegisterPageViewModel : BaseViewModel {
     [RelayCommand]
     async void Register() {
 
-//        if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password)
-//&& !string.IsNullOrWhiteSpace(ConfirmPassword) && !string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName)) {
-//            if (!Password.Equals(ConfirmPassword)) {
-                if (true) {
-            if (1>1) {
-
+        if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password)
+            && !string.IsNullOrWhiteSpace(ConfirmPassword) && !string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName)) {
+            if (!Password.Equals(ConfirmPassword)) {
 
                 await AppShell.Current.DisplayAlert("Slaptazodis nesutampa!",
                         "Ivesti slaptazodziai nesutampa.", "OK");
                 return;
             }
             else {
-
                 // calling api
 
-                //var response = await _registerService.RegisterNewUser(new RegisterRequest {
-                //    first_name = FirstName,
-                //    last_name = LastName,
-                //    username = UserName,
-                //    password = Password,
-                //    email = Email,
-                //    description = ""
-                //});
-
-                // for debug - every try remove this user from WP or change user_name and email!
-                String email = "petras@petraitis.ua";
-                String psw = "Paswordas";
                 var response = await _registerService.RegisterNewUser(new RegisterRequest {
-                    first_name = "AVardas",
-                    last_name = "APavarde",
-                    username = "AVardas",
-                    password = psw,
-                    email = email,
-                    description = "Naujas useris"
+                    first_name = FirstName,
+                    last_name = LastName,
+                    username = UserName,
+                    password = Password,
+                    email = Email,
+                    description = ""
                 });
 
                 if (response != null) {
@@ -86,8 +70,8 @@ public partial class RegisterPageViewModel : BaseViewModel {
 
                         // login with new user account
                         var loginResponse = await _loginService.Authenticate(new LoginRequest {
-                            username = email,
-                            password = psw
+                            username = Email,
+                            password = Password
                         });
                         if (loginResponse != null) {
 
@@ -107,9 +91,6 @@ public partial class RegisterPageViewModel : BaseViewModel {
                         var registrationFailure = Toast.Make($"{response.message}", ToastDuration.Long);
                         registrationFailure.Show();
                     }
-
-
-
 
                 }
                 else {

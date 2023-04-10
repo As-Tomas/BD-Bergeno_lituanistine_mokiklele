@@ -1,5 +1,5 @@
 ﻿using BD_Bergeno_lituanistine_mokiklele.Models;
-
+using BD_Bergeno_lituanistine_mokiklele;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -64,22 +64,23 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
         }
 
 
-        //EQNWWuhs445y67eee74lkhghj
+        
         private async Task UpdateLocalBasicUserInfo(LoginResponse authenticationResponse) {
 
             var token = authenticationResponse.Token;
             var email = authenticationResponse.User_email;
+            var pasword = new Secrets();
 
             using (var _httpClient = new HttpClient()) {
 
-                _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                _httpClient.DefaultRequestHeaders.Add("Authorization", pasword.Psw);
                 HttpResponseMessage responseOfUpdate = await _httpClient.GetAsync($"{_url}/wp/v2/users?search={email}");
 
                 if (responseOfUpdate.StatusCode == System.Net.HttpStatusCode.OK) {
 
-                    
-                    var json2 = await responseOfUpdate.Content.ReadAsStringAsync();
-                    var responseObject2 = JsonConvert.DeserializeObject<List<Root>>(json2);
+                    // BUG jsonStr. When login returns arr of strings, When register and try to login returns empty arr. WTF?
+                    var jsonStr = await responseOfUpdate.Content.ReadAsStringAsync();
+                    var responseObject2 = JsonConvert.DeserializeObject<List<Root>>(jsonStr);
                     authenticationResponse.UserBasicInfo.Role = responseObject2[0].roles[0];
                     authenticationResponse.UserBasicInfo.Email = responseObject2[0].email;
                     authenticationResponse.UserBasicInfo.FirstName = responseObject2[0].first_name;

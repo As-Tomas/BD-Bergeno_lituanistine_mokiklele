@@ -9,7 +9,5 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
     public interface IRegisterService {
 
         Task<RegisterResponse> RegisterNewUser(RegisterRequest request);
-        //Task<UserBasicInfo> UpdateUserBasicInfo(RegisterRequest request);
-        //Task<LoginResponse> Authenticate(LoginRequest loginRequest);
     }
 }
