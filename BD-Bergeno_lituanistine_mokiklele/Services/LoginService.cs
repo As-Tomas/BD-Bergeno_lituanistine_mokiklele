@@ -69,7 +69,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
 
             var token = authenticationResponse.Token;
             var email = authenticationResponse.User_email;
-            var pasword = new Secrets();
+            var pasword = new Secrets(); // login secret password from WP Application Passwords converted by postman
 
             using (var _httpClient = new HttpClient()) {
 
