@@ -70,6 +70,15 @@
             </Frame>
         </StackLayout>
 
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:BorderlessEntry Text="{Binding Description}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Jusu vaiko vardas" Keyboard="Text"/>
+            </Frame>
+        </StackLayout>
+
         <Button Text="Registruotis" WidthRequest="120" CornerRadius="20" HorizontalOptions="Center" Command="{Binding RegisterCommand}" />
 
         

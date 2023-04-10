@@ -28,6 +28,9 @@ public partial class RegisterPageViewModel : BaseViewModel {
     [ObservableProperty]
     private string _confirmPassword;
 
+    [ObservableProperty]
+    private string _description;
+
     private readonly IRegisterService _registerService;
     private readonly ILoginService _loginService;
 
@@ -58,7 +61,7 @@ public partial class RegisterPageViewModel : BaseViewModel {
                     username = UserName,
                     password = Password,
                     email = Email,
-                    description = ""
+                    description = Description
                 });
 
                 if (response != null) {
