@@ -4,6 +4,7 @@ public partial class NarysDashboardPage : ContentPage
 {
 	public NarysDashboardPage()
 	{
-		InitializeComponent();
-	}
+        InitializeComponent();
+        
+    }
 }

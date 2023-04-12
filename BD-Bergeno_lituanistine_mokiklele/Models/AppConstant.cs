@@ -25,7 +25,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
 
             if (App.UserDetails.RoleID == (int)RoleDetails.Subscriber) {
                 var flyoutItem = new FlyoutItem() {
-                    Title = "Dashboard Page",
+                    Title = "Narys Page",
                     Route = nameof(NarysDashboardPage),
                     FlyoutDisplayOptions = FlyoutDisplayOptions.AsMultipleItems,
                     Items =
@@ -33,17 +33,19 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                 new ShellContent
                                 {
                                     Icon = Icons.Dashboard,
-                                    Title = "Subscriber Dashboard",
+                                    Title = "Nario Dashboard",
                                     ContentTemplate = new DataTemplate(typeof(NarysDashboardPage)),
                                 },
                                 new ShellContent
                                 {
                                     Icon = Icons.AboutUs,
-                                    Title = "Narys Profile",
-                                    ContentTemplate = new DataTemplate(typeof(NarysDashboardPage)),
+                                    Title = "Nario Profilis",
+                                    ContentTemplate = new DataTemplate(typeof(ProfileDashboardPage)),
                                 },
+                                
                             }
                 };
+                // default load page
                 if (!AppShell.Current.Items.Contains(flyoutItem)) {
                     AppShell.Current.Items.Add(flyoutItem);
                     if (DeviceInfo.Platform == DevicePlatform.WinUI) {
@@ -75,7 +77,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                 {
                                     Icon = Icons.AboutUs,
                                     Title = "Teacher Profile",
-                                    ContentTemplate = new DataTemplate(typeof(TeacherDashboardPage)),
+                                    ContentTemplate = new DataTemplate(typeof(ProfileDashboardPage)),
                                 },
                    }
                 };
@@ -110,7 +112,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                 {
                                     Icon = Icons.AboutUs,
                                     Title = "Admin Profile",
-                                    ContentTemplate = new DataTemplate(typeof(AdminDashboardPage)),
+                                    ContentTemplate = new DataTemplate(typeof(ProfileDashboardPage)),
                                 },
                    }
                 };

@@ -5,7 +5,7 @@ public partial class FlyoutHeaderControl : StackLayout {
         InitializeComponent();
 
         if (App.UserDetails != null) {
-            lblUserName.Text = App.UserDetails.FirstName + App.UserDetails.FirstName;
+            lblUserName.Text = App.UserDetails.FirstName + " " + App.UserDetails.LastName;
             lblUserEmail.Text = App.UserDetails.Email;
             lblUserRole.Text = App.UserDetails.Role;
         }

@@ -3,7 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BD_Bergeno_lituanistine_mokiklele.Views.Dashboard.NarysDashboardPage"
              Title="NarysDashboardPage">
-    <StackLayout Padding="10">
-        <Label FontSize="18" Text="Welcome to Narys Dashboard Page" />
-    </StackLayout>
+
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Label FontSize="18" Text="Welcome to Narys Dashboard Page" />
+            <WebView x:Name="webView" 
+                        Source="https://webbiter.com/index.php/naujienos-2/" />
+        </StackLayout>
+    </ScrollView>
+    
+    
 </ContentPage>

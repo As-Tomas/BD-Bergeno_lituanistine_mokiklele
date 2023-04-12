@@ -10,6 +10,6 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Dashboard
     public partial class DashboardPageViewModel : BaseViewModel {
         public DashboardPageViewModel() {
             AppShell.Current.FlyoutHeader = new FlyoutHeaderControl();
-        }
+        }              
     }
 }
