@@ -10,6 +10,9 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BD_Bergeno_lituanistine_mokiklele.Services {
     public class LoginService : ILoginService {
@@ -57,6 +60,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
                     }
                 }
                 catch (Exception ex) {
+                    
                     Debug.WriteLine($"Whoops exception: {ex.Message}");
                     return null;
                 }
@@ -86,6 +90,11 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
                     authenticationResponse.UserBasicInfo.FirstName = responseObject2[0].first_name;
                     authenticationResponse.UserBasicInfo.LastName = responseObject2[0].last_name;
                     authenticationResponse.UserBasicInfo.Token = token;
+                }
+                else
+                {
+                    var toast = Toast.Make("FAILED UpdateLocalBasicUserInfo", ToastDuration.Long);
+                    toast.Show();
                 }
 
                 if (authenticationResponse.UserBasicInfo.Role.ToLower().Contains("administrator")) {
