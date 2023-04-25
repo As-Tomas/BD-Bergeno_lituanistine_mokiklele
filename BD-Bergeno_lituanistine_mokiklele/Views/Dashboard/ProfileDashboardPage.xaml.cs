@@ -96,7 +96,7 @@ public partial class ProfileDashboardPage : ContentPage
         //----------------ading cookies retrive 
         var retriveCookies = new RetriveCookies();
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODI0NTY2MjcsImVtYWlsIjoidGVzdEB0dHQudHQifQ.abdYMRBAl2Itv-yfizl6mPnKpCZwY5Lv6ATvBT1LGbU";
-        await retriveCookies.AutoLogin(token);
+        await retriveCookies.AutoLogin(token); //oh Im in view!!! TODO move this part to view model  
 
         var cookiesAutoLogin = retriveCookies.Cookies.GetCookies(new Uri("https://webbiter.com"));
 
