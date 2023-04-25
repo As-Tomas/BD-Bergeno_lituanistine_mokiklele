@@ -73,7 +73,7 @@ public partial class RegisterPageViewModel : BaseViewModel {
 
                         // login with new user account
                         var loginResponse = await _loginService.Authenticate(new LoginRequest {
-                            username = Email,
+                            email = Email,
                             password = Password
                         });
                         if (loginResponse != null) {

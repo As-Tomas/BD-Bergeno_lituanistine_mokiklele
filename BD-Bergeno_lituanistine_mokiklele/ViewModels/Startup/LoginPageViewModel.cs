@@ -31,7 +31,11 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
         #region Commands
         [RelayCommand]
         async void Login() {
-            if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password)) {
+            if (true)
+            {
+                //if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password)) {
+
+
                 //var userDetails = new UserBasicInfo();
                 //userDetails.Email = Email;
                 //userDetails.FirstName = "First Name";
@@ -52,9 +56,19 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
 
 
                 // calling api 
-                var response = await _loginService.Authenticate(new LoginRequest {
-                    username = Email,
-                    password = Password
+                //var response = await _loginService.Authenticate(new LoginRequest {
+                //    username = Email,
+                //    password = Password
+
+                //});
+
+                var secrets = new Secrets();
+                var response = await _loginService.AuthenticateSimpleWay(new LoginRequest
+                {
+                    //username = secrets.usrEmail,
+                    //password = secrets.usrPasword
+                    email = secrets.usrEmail,
+                    password = secrets.usrPasword
 
                 });
 

@@ -1,3 +1,4 @@
+using BD_Bergeno_lituanistine_mokiklele.Models;
 using System.Net;
 
 namespace BD_Bergeno_lituanistine_mokiklele.Views.Dashboard;
@@ -33,8 +34,8 @@ public partial class ProfileDashboardPage : ContentPage
 
 
         CookieContainer cookieContainer = new CookieContainer();
-        //Uri uri = new Uri("https://webbiter.com/index.php/2023/04/11/privatus-postas/", UriKind.RelativeOrAbsolute);
-        Uri uri = new Uri("https://webbiter.com/index.php/2023/04/11/privatus-tik-wp/", UriKind.RelativeOrAbsolute);
+        Uri uri = new Uri("https://webbiter.com/index.php/2023/04/11/privatus-postas/", UriKind.RelativeOrAbsolute);
+        Uri uri1 = new Uri("https://webbiter.com/index.php/2023/04/11/privatus-tik-wp/", UriKind.RelativeOrAbsolute);
         Uri uri2 = new Uri("https://webbiter.com", UriKind.RelativeOrAbsolute);
         //"PHPSESSID=f72d5d559de38e3371ce23d40f347016; " +
         //    "wc_auth_3c156e129f55ffdb2b17dbdaddc0c00e=27%7C1682498521%7C6f4aaa8fdb282998a7a3a3e9d2823a721c9b285143cc1a53180dee9d64fa5a02; " +
@@ -45,13 +46,13 @@ public partial class ProfileDashboardPage : ContentPage
         {
             Name = "JWT",
             Secure = true,
-            Value = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODEyOTA1NTMsImVtYWlsIjoidGVzdEB0dHQudHQifQ.AzRGu28iZa6-nQKMSTTlLRHGA_7hRNZ70RnXQGQy0Xo"
+            Value = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODIxNTE3NTIsImVtYWlsIjoid3h3eHd4d3h3eEB3eHd4d3h3eC53eCJ9.cLz2npkcT7w0te7-uSm1mCISu6cP84XPt5cnMoCGCCs"
         };
         Cookie cookie1 = new Cookie
         {
-            Name = "jwt",
+            Name = "Authorization",
             Secure = true,
-            Value = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODEyOTA1NTMsImVtYWlsIjoidGVzdEB0dHQudHQifQ.AzRGu28iZa6-nQKMSTTlLRHGA_7hRNZ70RnXQGQy0Xo"
+            Value = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODIxNTE3NTIsImVtYWlsIjoid3h3eHd4d3h3eEB3eHd4d3h3eC53eCJ9.cLz2npkcT7w0te7-uSm1mCISu6cP84XPt5cnMoCGCCs"
         };
 
         Cookie cookie2 = new Cookie
@@ -66,46 +67,52 @@ public partial class ProfileDashboardPage : ContentPage
             Name = "wc_auth_3c156e129f55ffdb2b17dbdaddc0c00e",
             Secure = true,
             HttpOnly = true,
-            Value = "6%7C1683137565%7C86b4a1c847c23852e0379a771bd36545bc948aea4a191c7fede29e3604203753"
+            Value = "6%7C1683321369%7Cef770e7bcd9378f237030cce2e4ec5c9db63c74314bf4cfdabed7630014d8790"
         };
 
+        // sitas prijungia virsutiniu netikrinau
         Cookie cookie4 = new Cookie
         {
             Name = "wordpress_logged_in_3c156e129f55ffdb2b17dbdaddc0c00e",
             Secure = true,
             HttpOnly = true,
-            Value = "tomas.bance%40gmail.com%7C1682100765%7CF8pp0EiAvijlFMMJkjv5YCTGpp21kjrr67XBnmySK57%7C444ea87e42b1feef981517383bddc7200e7aa24ba841297b1d0f9bd39c79f509"
+            Value = "tomas.bance%40gmail.com%7C1682284569%7CKu6ZrBMZlFZNIrw12CXRfHLJyOauce0rnQR1uTK3T0c%7Cd69324e1e2fd7f75cf0227eb4c2a51232ebc0c2f4d58242035f98898857169a1"
         };
 
-        Cookie cookie5 = new Cookie
-        {
-            Name = "wp-settings-time-5",
-            Secure = true,
-            Value = "1679242613"
-        };
+        //Cookie cookie5 = new Cookie
+        //{
+        //    Name = "wp-settings-time-5",
+        //    Secure = true,
+        //    Value = "1679242613"
+        //};
+
         //cookieContainer.Add(uri2, cookie);
-        //cookieContainer.Add(uri2, cookie1);
-        //cookieContainer.Add(uri2,cookie2);
-        //cookieContainer.Add(uri2,cookie3);
+       // cookieContainer.Add(uri2, cookie1);
+        //cookieContainer.Add(uri2, cookie2);
+        //cookieContainer.Add(uri2, cookie3);
         //cookieContainer.Add(uri2, cookie4);
-        //cookieContainer.Add(uri2,cookie5);
+        //cookieContainer.Add(uri2, cookie5);
 
-        cookieContainer.Add(uri2, cookie);
-        cookieContainer.Add(uri2, cookie1);
-        cookieContainer.Add(uri2, cookie2);
-        cookieContainer.Add(uri2, cookie3);
-        cookieContainer.Add(uri2, cookie4);
-        cookieContainer.Add(uri2, cookie5);
+        //----------------ading cookies retrive 
+        var retriveCookies = new RetriveCookies();
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODI0NTY2MjcsImVtYWlsIjoidGVzdEB0dHQudHQifQ.abdYMRBAl2Itv-yfizl6mPnKpCZwY5Lv6ATvBT1LGbU";
+        await retriveCookies.AutoLogin(token);
+
+        var cookiesAutoLogin = retriveCookies.Cookies.GetCookies(new Uri("https://webbiter.com"));
+
+        foreach( Cookie cookieO in cookiesAutoLogin)
+        {
+            cookieContainer.Add(uri2, cookieO);
+        }
 
         var coo = cookieContainer.GetAllCookies();
 
 
         var webView = new WebView();
+        var web = webView.Cookies;
 
         webView.Cookies = cookieContainer;
-        //webView.Cookies.Add(cookie1);
-        //webView.Cookies.Add(cookie);
-        webView.Source = new UrlWebViewSource { Url = uri.ToString() };
+        webView.Source = new UrlWebViewSource { Url = uri1.ToString() };
 
         content.Content = webView;
         webView.Reload();

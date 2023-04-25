@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace BD_Bergeno_lituanistine_mokiklele.Services {
     public interface ILoginService {
         Task<LoginResponse> Authenticate(LoginRequest loginRequest);
+        Task<LoginResponse> AuthenticateSimpleWay(LoginRequest loginRequest);
         //Task<List<UserListResponse>> GetAllUsers();
     }
 }
