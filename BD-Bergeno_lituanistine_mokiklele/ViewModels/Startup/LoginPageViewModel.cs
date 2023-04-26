@@ -63,10 +63,8 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
                 //});
 
                 var secrets = new Secrets();
-                var response = await _loginService.AuthenticateSimpleWay(new LoginRequest
-                {
-                    //username = secrets.usrEmail,
-                    //password = secrets.usrPasword
+                var response = await _loginService.Authenticate(new LoginRequest
+                {                   
                     email = secrets.usrEmail,
                     password = secrets.usrPasword
 

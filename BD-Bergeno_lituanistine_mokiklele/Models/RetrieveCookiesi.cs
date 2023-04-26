@@ -13,7 +13,7 @@ using System.Net.Http.Headers;
 
 namespace BD_Bergeno_lituanistine_mokiklele.Models
 {
-    internal class RetriveCookies
+    public class RetriveCookies
     {
         private static readonly HttpClientHandler _clientHandler = new HttpClientHandler()
         {
@@ -25,11 +25,12 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models
         public CookieContainer Cookies => _clientHandler.CookieContainer;
 
 
-        public async Task AutoLogin(string token)
+        public async Task<HttpResponseMessage> AutoLogin(string token)
         {
-            HttpResponseMessage responseOfUpdate = await _client.GetAsync($"https://webbiter.com/?rest_route=/simple-jwt-login/v1/autologin&JWT={token}");
+            HttpResponseMessage response = await _client.GetAsync($"https://webbiter.com/?rest_route=/simple-jwt-login/v1/autologin&JWT={token}");
 
-            //if (responseOfUpdate.StatusCode == System.Net.HttpStatusCode.OK)
+            return response;
+            //if (response.StatusCode == System.Net.HttpStatusCode.OK)
             //{
 
             //    var cookies = _clientHandler.CookieContainer.GetCookies(new Uri("https://webbiter.com"));

@@ -28,7 +28,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
         public LoginService() {
             //_httpClient = new HttpClient(); kai sita cia tai lieka hederis kuri funkcijoje suformuoju ir issiloginus loginantis neleidzia naujo hederio formuoti
             //_baseAddress = DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2.:5209" : "http://localhost:7209 "
-            _baseAddress = "https://www.webbiter.com";
+            _baseAddress = "http://www.webbiter.com";
             _url = $"{_baseAddress}/index.php/wp-json";
 
             _jsonSerializerOptions = new JsonSerializerOptions {
@@ -72,8 +72,6 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
         {
             using (var _httpClient = new HttpClient())
             {
-
-
                 try
                 {
                     String simpleJWTLogin = "https://webbiter.com/?rest_route=/simple-jwt-login/v1/auth";
@@ -84,13 +82,11 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
 
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-
                         var json = await response.Content.ReadAsStringAsync();
                         var responseObject = JsonConvert.DeserializeObject<LoginResponse>(json);
 
                         await UpdateLocalBasicUserInfoSimpleWay(responseObject, loginRequest);
                         await AutoLogin(responseObject, loginRequest);
-
 
                         return responseObject;
                     }

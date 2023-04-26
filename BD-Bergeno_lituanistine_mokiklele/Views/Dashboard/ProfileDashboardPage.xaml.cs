@@ -5,7 +5,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Views.Dashboard;
 
 public partial class ProfileDashboardPage : ContentPage
 {
-	public ProfileDashboardPage()
+	public ProfileDashboardPage(RetriveCookies retriveCookies)
 	{
 		InitializeComponent();
 
@@ -94,16 +94,16 @@ public partial class ProfileDashboardPage : ContentPage
         //cookieContainer.Add(uri2, cookie5);
 
         //----------------ading cookies retrive 
-        var retriveCookies = new RetriveCookies();
-        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODI0NTY2MjcsImVtYWlsIjoidGVzdEB0dHQudHQifQ.abdYMRBAl2Itv-yfizl6mPnKpCZwY5Lv6ATvBT1LGbU";
-        await retriveCookies.AutoLogin(token); //oh Im in view!!! TODO move this part to view model  
+        //var retriveCookies = new RetriveCookies();
+        //String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODI0NTY2MjcsImVtYWlsIjoidGVzdEB0dHQudHQifQ.abdYMRBAl2Itv-yfizl6mPnKpCZwY5Lv6ATvBT1LGbU";
+        //var seip = await retriveCookies.AutoLogin(token); //oh Im in view!!! TODO move this part to view model  
 
-        var cookiesAutoLogin = retriveCookies.Cookies.GetCookies(new Uri("https://webbiter.com"));
+        //var cookiesAutoLogin = retriveCookies.Cookies.GetCookies(new Uri("https://webbiter.com"));
 
-        foreach( Cookie cookieO in cookiesAutoLogin)
-        {
-            cookieContainer.Add(uri2, cookieO);
-        }
+        //foreach( Cookie cookieO in cookiesAutoLogin)
+        //{
+        //    cookieContainer.Add(uri2, cookieO);
+        //}
 
         var coo = cookieContainer.GetAllCookies();
 
