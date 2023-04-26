@@ -28,7 +28,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
         public LoginService() {
             //_httpClient = new HttpClient(); kai sita cia tai lieka hederis kuri funkcijoje suformuoju ir issiloginus loginantis neleidzia naujo hederio formuoti
             //_baseAddress = DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2.:5209" : "http://localhost:7209 "
-            _baseAddress = "http://www.webbiter.com";
+            _baseAddress = "https://www.webbiter.com";
             _url = $"{_baseAddress}/index.php/wp-json";
 
             _jsonSerializerOptions = new JsonSerializerOptions {
