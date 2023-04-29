@@ -1,6 +1,7 @@
-using BD_Bergeno_lituanistine_mokiklele.Controls;
+﻿using BD_Bergeno_lituanistine_mokiklele.Controls;
 using BD_Bergeno_lituanistine_mokiklele.Views.Dashboard;
 using BD_Bergeno_lituanistine_mokiklele.Views.Startup;
+using BD_Bergeno_lituanistine_mokiklele.Views.WebViewPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,13 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                     Title = "Nario Profilis",
                                     ContentTemplate = new DataTemplate(typeof(ProfileDashboardPage)),
                                 },
-                                
+                                new ShellContent
+                                {
+                                    Icon = Icons.AboutUs,
+                                    Title = "Žinutės",
+                                    ContentTemplate = new DataTemplate(typeof(MessagesPage)),
+                                },
+
                             }
                 };
                 // default load page
@@ -79,6 +86,12 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                     Title = "Teacher Profile",
                                     ContentTemplate = new DataTemplate(typeof(ProfileDashboardPage)),
                                 },
+                                new ShellContent
+                                {
+                                    Icon = Icons.AboutUs,
+                                    Title = "Žinutės",
+                                    ContentTemplate = new DataTemplate(typeof(MessagesPage)),
+                                },
                    }
                 };
 
@@ -113,6 +126,12 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                     Icon = Icons.AboutUs,
                                     Title = "Admin Profile",
                                     ContentTemplate = new DataTemplate(typeof(ProfileDashboardPage)),
+                                },
+                                new ShellContent
+                                {
+                                    Icon = Icons.AboutUs,
+                                    Title = "Žinutės",
+                                    ContentTemplate = new DataTemplate(typeof(MessagesPage)),
                                 },
                    }
                 };
