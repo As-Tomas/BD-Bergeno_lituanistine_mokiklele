@@ -12,6 +12,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Dashboard
 {
+    //TODO generally not used
     public partial class ProfileDashboardPageViewModel
     {
         public ProfileDashboardPageViewModel()
