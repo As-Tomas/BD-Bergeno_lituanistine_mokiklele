@@ -31,7 +31,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.ViewModels.Startup {
         #region Commands
         [RelayCommand]
         async void Login() {
-            if (true)
+            if (true) //TODO restore after debugging
             {
                 //if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password)) {
 

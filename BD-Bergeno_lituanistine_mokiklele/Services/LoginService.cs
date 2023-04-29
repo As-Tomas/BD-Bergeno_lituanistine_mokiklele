@@ -25,8 +25,6 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
         private readonly string _apiKey;
 
         public LoginService() {
-            //_httpClient = new HttpClient(); kai sita cia tai lieka hederis kuri funkcijoje suformuoju ir issiloginus loginantis neleidzia naujo hederio formuoti
-            //_baseAddress = DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2.:5209" : "http://localhost:7209 "
             _baseAddress = "https://www.webbiter.com";
             _url = $"{_baseAddress}/index.php/wp-json";
 
@@ -35,7 +33,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
             };
 
         }
-
+        //TODO Authenticate no used now is AuthenticateSimpleWay
         public async Task<LoginResponse> Authenticate(LoginRequest loginRequest) {
             using (var _httpClient = new HttpClient()) {
 
@@ -110,7 +108,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
 
         private async Task UpdateLocalBasicUserInfoSimpleWay(LoginResponse authenticationResponse, LoginRequest loginRequest)
         {
-
+            //TODO remove unused code parts
             var token = authenticationResponse.data.jwt;
             var email = loginRequest.email;
             var secrect = new Secrets(); // login secret password from WP Application Passwords converted by postman
@@ -125,8 +123,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
 
                 if (responseOfUpdate.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-
-                    // BUG jsonStr. When login returns arr of strings, When register and try to login returns empty arr. WTF?
+                    
                     var jsonStr = await responseOfUpdate.Content.ReadAsStringAsync();
                     var responseObject2 = JsonConvert.DeserializeObject<List<Root>>(jsonStr);
                     authenticationResponse.UserBasicInfo.Role = responseObject2[0].roles[0];
@@ -159,7 +156,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
             }
 
         }
-        // testing auto login result true
+        // TODO add to startup to refresh cookies
         private async Task AutoLogin(LoginResponse authenticationResponse, LoginRequest loginRequest)
         {
 

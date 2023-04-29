@@ -18,7 +18,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
             using (var client = new HttpClient()) {
 
                 try {
-
+                    //TODO update simple JWT way
                     string registerRequestStr = JsonConvert.SerializeObject(request);
                     var content = new StringContent(registerRequestStr, Encoding.UTF8, "application/json");
 

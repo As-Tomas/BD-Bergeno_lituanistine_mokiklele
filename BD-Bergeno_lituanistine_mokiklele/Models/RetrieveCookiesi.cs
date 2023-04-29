@@ -12,6 +12,7 @@ using System.Net.Http;
 
 namespace BD_Bergeno_lituanistine_mokiklele.Models
 {
+    //TODO use it for updating cookies
     public class RetriveCookies
     {
         private static readonly HttpClientHandler _clientHandler = new HttpClientHandler()
