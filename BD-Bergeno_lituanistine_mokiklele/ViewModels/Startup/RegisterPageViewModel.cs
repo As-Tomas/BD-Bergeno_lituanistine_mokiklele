@@ -69,7 +69,7 @@ public partial class RegisterPageViewModel : BaseViewModel {
 
                     if (responseCode.Equals(200)) {
                         var registrationSuccess = Toast.Make("Registracija sekminga", ToastDuration.Long);
-                        registrationSuccess.Show();
+                        await registrationSuccess.Show();
 
                         // login with new user account
                         var loginResponse = await _loginService.Authenticate(new LoginRequest {
@@ -92,7 +92,7 @@ public partial class RegisterPageViewModel : BaseViewModel {
                     else 
                     {
                         var registrationFailure = Toast.Make($"{response.message}", ToastDuration.Long);
-                        registrationFailure.Show();
+                        await registrationFailure.Show();
                     }
 
                 }
@@ -113,7 +113,7 @@ public partial class RegisterPageViewModel : BaseViewModel {
         }
         else {
             var toast = Toast.Make("Užpildykite visus privalomus laukus", ToastDuration.Long);
-            toast.Show();
+            await toast.Show();
         }
         
         }

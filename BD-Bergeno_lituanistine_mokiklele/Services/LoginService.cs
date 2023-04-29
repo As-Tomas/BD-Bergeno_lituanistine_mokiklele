@@ -12,7 +12,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
-using static System.Net.Mime.MediaTypeNames;
 using System.Net;
 
 namespace BD_Bergeno_lituanistine_mokiklele.Services {
@@ -68,8 +67,13 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
             }
         }
 
-        public async Task<LoginResponse> AuthenticateSimpleWay(LoginRequest loginRequest)
+        public async Task<LoginResponse> AuthenticateSimpleWay(LoginRequest loginRequest)            
         {
+            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+            {
+                var toast = Toast.Make("No Internet", ToastDuration.Long);
+                await toast.Show();
+            }
             using (var _httpClient = new HttpClient())
             {
                 try
@@ -134,7 +138,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
                 else
                 {
                     var toast = Toast.Make("FAILED UpdateLocalBasicUserInfo", ToastDuration.Long);
-                    toast.Show();
+                    await toast.Show();
                 }
 
                 if (authenticationResponse.UserBasicInfo.Role.ToLower().Contains("administrator"))
@@ -180,12 +184,11 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
                 if (responseOfUpdate.StatusCode == System.Net.HttpStatusCode.OK)
                 {
 
-                    // BUG jsonStr. When login returns arr of strings, When register and try to login returns empty arr. WTF?
                     var jsonStr = await responseOfUpdate.Content.ReadAsStringAsync();
                     var cookies = _clientHandler.CookieContainer.GetCookies(new Uri("https://webbiter.com"));
 
-
-
+                    var serializedCookies = JsonConvert.SerializeObject(cookies);
+                    authenticationResponse.UserBasicInfo.Cookies = serializedCookies;
                 }
 
             }
@@ -219,7 +222,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
                 else
                 {
                     var toast = Toast.Make("FAILED UpdateLocalBasicUserInfo", ToastDuration.Long);
-                    toast.Show();
+                    await toast.Show();
                 }
 
                 if (authenticationResponse.UserBasicInfo.Role.ToLower().Contains("administrator")) {

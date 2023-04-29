@@ -14,6 +14,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
         public string Email { get; set; }
         public int RoleID { get; set; }
         public string Role { get; set; }
+        public string Cookies { get; set; }
         public string FullName 
             {
             get => $"{FirstName} {LastName}";

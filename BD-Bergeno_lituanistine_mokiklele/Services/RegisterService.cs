@@ -41,7 +41,7 @@ namespace BD_Bergeno_lituanistine_mokiklele.Services {
                 catch (Exception ex) {
                     Debug.WriteLine($"Whoops exception: {ex.Message}");
                     var registrationFailure = Toast.Make("Whoops something is wrong", ToastDuration.Long);
-                    registrationFailure.Show();
+                    await registrationFailure.Show();
                     return null;
                 }
             }

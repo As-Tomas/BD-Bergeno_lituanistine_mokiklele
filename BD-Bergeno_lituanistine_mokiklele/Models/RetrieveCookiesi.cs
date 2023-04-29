@@ -7,9 +7,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System;
-using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
+
 
 namespace BD_Bergeno_lituanistine_mokiklele.Models
 {
