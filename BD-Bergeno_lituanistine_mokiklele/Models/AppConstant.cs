@@ -30,7 +30,13 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                     Route = nameof(NarysDashboardPage),
                     FlyoutDisplayOptions = FlyoutDisplayOptions.AsMultipleItems,
                     Items =
-                            {
+                    {
+                                new ShellContent
+                                {
+                                    Icon = Icons.AboutUs,
+                                    Title = "Naujienos",
+                                    ContentTemplate = new DataTemplate(typeof(NewsPage)),
+                                },
                                 new ShellContent
                                 {
                                     Icon = Icons.Dashboard,
@@ -82,6 +88,12 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                     {
                                 new ShellContent
                                 {
+                                    Icon = Icons.AboutUs,
+                                    Title = "Naujienos",
+                                    ContentTemplate = new DataTemplate(typeof(NewsPage)),
+                                },
+                                new ShellContent
+                                {
                                     Icon = Icons.Dashboard,
                                     Title = "Teacher Dashboard",
                                     ContentTemplate = new DataTemplate(typeof(TeacherDashboardPage)),
@@ -127,6 +139,12 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                     FlyoutDisplayOptions = FlyoutDisplayOptions.AsMultipleItems,
                     Items =
                     {
+                                new ShellContent
+                                {
+                                    Icon = Icons.AboutUs,
+                                    Title = "Naujienos",
+                                    ContentTemplate = new DataTemplate(typeof(NewsPage)),
+                                },
                                 new ShellContent
                                 {
                                     Icon = Icons.Dashboard,
