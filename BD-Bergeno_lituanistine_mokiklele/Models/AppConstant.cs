@@ -49,6 +49,12 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                     Title = "Žinutės",
                                     ContentTemplate = new DataTemplate(typeof(MessagesPage)),
                                 },
+                                 new ShellContent
+                                {
+                                    Icon = Icons.AboutUs,
+                                    Title = "Grupės",
+                                    ContentTemplate = new DataTemplate(typeof(GroupsPage)),
+                                },
 
                             }
                 };
@@ -92,6 +98,12 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                     Title = "Žinutės",
                                     ContentTemplate = new DataTemplate(typeof(MessagesPage)),
                                 },
+                                new ShellContent
+                                {
+                                    Icon = Icons.AboutUs,
+                                    Title = "Grupės",
+                                    ContentTemplate = new DataTemplate(typeof(GroupsPage)),
+                                },
                    }
                 };
 
@@ -132,6 +144,12 @@ namespace BD_Bergeno_lituanistine_mokiklele.Models {
                                     Icon = Icons.AboutUs,
                                     Title = "Žinutės",
                                     ContentTemplate = new DataTemplate(typeof(MessagesPage)),
+                                },
+                                 new ShellContent
+                                {
+                                    Icon = Icons.AboutUs,
+                                    Title = "Grupės",
+                                    ContentTemplate = new DataTemplate(typeof(GroupsPage)),
                                 },
                    }
                 };
