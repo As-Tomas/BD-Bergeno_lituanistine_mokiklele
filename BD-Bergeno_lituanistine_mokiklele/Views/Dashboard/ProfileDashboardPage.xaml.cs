@@ -26,9 +26,11 @@ public partial class ProfileDashboardPage : ContentPage
         // Create a new instance of the WebView control and assign it to the existing reference.
         MyWebView = CreateNewWebView();
     
-        Uri uri = new Uri("https://webbiter.com/index.php/2023/04/11/privatus-postas/", UriKind.RelativeOrAbsolute);
-        Uri uri1 = new Uri("https://webbiter.com/index.php/2023/04/11/privatus-tik-wp/", UriKind.RelativeOrAbsolute);
-        Uri uri2 = new Uri("https://webbiter.com", UriKind.RelativeOrAbsolute);
+        Uri uri1 = new Uri("https://webbiter.com/index.php/2023/04/11/privatus-postas/", UriKind.RelativeOrAbsolute);
+        Uri uri2 = new Uri("https://webbiter.com/index.php/2023/04/11/privatus-tik-wp/", UriKind.RelativeOrAbsolute);
+        Uri uri3 = new Uri("https://webbiter.com", UriKind.RelativeOrAbsolute);
+        
+        Uri uri = new Uri("https://webbiter.com/index.php/my-profile/", UriKind.RelativeOrAbsolute);
 
         var cookiesString = App.UserDetails.Cookies;
         var userCookies = JsonConvert.DeserializeObject<List<CookiesResponse>>(cookiesString);
