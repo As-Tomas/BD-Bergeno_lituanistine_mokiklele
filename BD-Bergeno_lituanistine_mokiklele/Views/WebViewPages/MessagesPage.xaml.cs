@@ -22,7 +22,7 @@ public partial class MessagesPage : ContentPage
         
         MyWebView = CreateNewWebView();       
 
-        Uri uri = new Uri("https://webbiter.com/index.php/my-profile/#pg-messages", UriKind.RelativeOrAbsolute);
+        Uri uri = new Uri("https://webbiter.com/index.php/zinutes/", UriKind.RelativeOrAbsolute);
 
         var cookiesString = App.UserDetails.Cookies;
         var userCookies = JsonConvert.DeserializeObject<List<CookiesResponse>>(cookiesString);

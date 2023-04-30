@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BD_Bergeno_lituanistine_mokiklele.Views.WebViewPages.GroupsPage"
-             Title="GroupsPage"
+             Title="Grupės"
              x:Name="content">
     
 </ContentPage>
